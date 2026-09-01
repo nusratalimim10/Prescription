@@ -290,3 +290,36 @@ body{background:#dfe4e9;font-family:Arial,Helvetica,sans-serif;color:#14243a}
     background: #c4ced8;
     border-radius: 10px;
 }
+/* Consultation Hours editable area */
+
+.consultation-hours {
+    line-height: 1.45;
+}
+
+.consultation-edit {
+    min-width: 180px;
+    min-height: 18px;
+    display: block;
+    cursor: text;
+    outline: none;
+}
+
+.consultation-edit:empty::before {
+    content: attr(data-placeholder);
+    color: #777;
+}
+
+.consultation-edit:focus {
+    outline: none;
+}
+
+/* Print: show only what was actually entered */
+@media print {
+    .consultation-edit:empty {
+        display: none !important;
+    }
+
+    .consultation-edit:empty::before {
+        display: none !important;
+    }
+}

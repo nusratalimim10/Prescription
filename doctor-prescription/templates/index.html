@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Prescription</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="page">
+
+    <header class="rx-header">
+        <div class="header-left">
+            <div class="logo-wrap">
+                <img id="doctorLogo" src="{{ url_for('static', filename='logo.png') }}" alt="Clinic Logo">
+            </div>
+            <div class="doctor-block">
+                <div class="editable doctor-name" contenteditable="true" data-placeholder="Doctor Name"></div>
+                <div class="editable" contenteditable="true" data-placeholder="Qualification"></div>
+                <div class="editable" contenteditable="true" data-placeholder="Designation / Title"></div>
+                <div class="editable" contenteditable="true" data-placeholder="Specialty / Department"></div>
+                <div class="editable" contenteditable="true" data-placeholder="Additional Specialty / Service"></div>
+                <div class="editable" contenteditable="true" data-placeholder="Membership / Professional Association"></div>
+                <div class="editable" contenteditable="true" data-placeholder="Registration / BMDC No."></div>
+            </div>
+        </div>
+
+        <div class="clinic-block">
+            <div class="clinic-title"><span class="clinic-icon">✚</span><div class="editable clinic-name" contenteditable="true" data-placeholder="Clinic / Chamber Name"></div></div>
+            <div class="editable" contenteditable="true" data-placeholder="Chamber Address"></div>
+            <div class="editable" contenteditable="true" data-placeholder="City / Country"></div>
+            <div class="editable" contenteditable="true" data-placeholder="Phone Number"></div>
+            <div class="editable" contenteditable="true" data-placeholder="Email Address"></div>
+            <div class="editable" contenteditable="true" data-placeholder="Website (optional)"></div>
+        </div>
+    </header>
+
+    <section class="patient-box">
+        <div><label>Name :</label><input id="patientName"></div>
+        <div><label>Age :</label><input id="patientAge"></div>
+        <div><label>Gender :</label>
+            <select id="patientGender"><option></option><option>Male</option><option>Female</option><option>Other</option></select>
+        </div>
+        <div><label>Phone :</label><input id="patientPhone" inputmode="tel"></div>
+        <div><label>Date :</label><input id="patientDate" type="date"></div>
+    </section>
+
+    <main class="workspace">
+        <aside class="left-column">
+
+            <section class="side-card">
+                <div class="section-tab">▣ &nbsp; C / C</div>
+                <div class="add-line">
+                    <input id="complaintInput" placeholder="Add complaints">
+                    <button onclick="addComplaint()">+</button>
+                </div>
+                <ul id="complaintList" class="item-list"></ul>
+            </section>
+
+            <section class="side-card history-card">
+                <div class="section-tab">M / H</div>
+                <div class="suggestion-grid history-suggestions mh-suggestions">
+                    <button type="button" onclick="addSuggested('mhList','DM')">DM</button>
+                    <button type="button" onclick="addSuggested('mhList','HTN')">HTN</button>
+                    <button type="button" onclick="addSuggested('mhList','MI')">MI</button>
+                    <button type="button" onclick="addSuggested('mhList','HF')">HF</button>
+                    <button type="button" onclick="addSuggested('mhList','STROKE')">STROKE</button>
+                    <button type="button" onclick="addSuggested('mhList','CKD')">CKD</button>
+                    <button type="button" onclick="addSuggested('mhList','CARCINOMA')">CARCINOMA</button>
+                    <button type="button" onclick="addSuggested('mhList','CHEMO THERAPY')">CHEMO THERAPY</button>
+                </div>
+                <div class="add-line"><input id="mhInput" placeholder="Add M / H"><button type="button" onclick="addHistory('mhInput','mhList')">+</button></div>
+                <ul id="mhList" class="item-list"></ul>
+            </section>
+            <section class="side-card history-card">
+                <div class="section-tab">P / D / H</div>
+                <div class="suggestion-grid history-suggestions">
+                    <button type="button" onclick="addSuggested('pdhList','Restoration')">Restoration</button>
+                    <button type="button" onclick="addSuggested('pdhList','RCT')">RCT</button>
+                    <button type="button" onclick="addSuggested('pdhList','Extraction')">Extraction</button>
+                </div>
+                <div class="add-line"><input id="pdhInput" placeholder="Add P / D / H"><button type="button" onclick="addHistory('pdhInput','pdhList')">+</button></div>
+                <ul id="pdhList" class="item-list"></ul>
+            </section>
+
+            <section class="side-card">
+                <div class="section-tab">♧ &nbsp; O / E</div>
+                <div class="suggestion-grid oe-suggestions">
+                    <button type="button" onclick="addSuggested('findingList','Calculus:+')">Calculus:+</button>
+                    <button type="button" onclick="addSuggested('findingList','Calculus:++')">Calculus:++</button>
+                    <button type="button" onclick="addSuggested('findingList','Calculus:+++')">Calculus:+++</button>
+                    <button type="button" onclick="addSuggested('findingList','Stain:+')">Stain:+</button>
+                    <button type="button" onclick="addSuggested('findingList','Stain:++')">Stain:++</button>
+                    <button type="button" onclick="addSuggested('findingList','Stain:+++')">Stain:+++</button>
+                </div>
+                <div class="add-line">
+                    <input id="findingInput" placeholder="Add new findings">
+                    <button onclick="addFinding()">+</button>
+                </div>
+                <div class="vitals">
+                    <label class="vital-field" data-vital="temp">Temp: <input id="temp"> °F / °C</label>
+                    <label class="vital-field" data-vital="bp">BP: <input id="bp1"> / <input id="bp2"> mmHg</label>
+                    <label class="vital-field" data-vital="pulse">Pulse: <input id="pulse"> /min</label>
+                    <label class="vital-field" data-vital="others">Others:</label>
+                    <textarea id="others" class="vital-field" data-vital="othersText"></textarea>
+                </div>
+                <ul id="findingList" class="item-list"></ul>
+            </section>
+
+            <section class="side-card tests-card">
+                <div class="section-tab">⚗ &nbsp; INVESTIGATION</div>
+                <div class="test-grid">
+                    <label><input type="checkbox" value="IOPA"> IOPA</label>
+                    <label><input type="checkbox" value="RVG"> RVG</label>
+                    <label><input type="checkbox" value="OPG"> OPG</label>
+                    <label><input type="checkbox" value="CBCT"> CBCT</label>
+                    <label><input type="checkbox" value="CT"> CT</label>
+                    <label><input type="checkbox" value="RBS"> RBS</label>
+                </div>
+                <div class="add-line test-add-line">
+                    <input id="testInput" placeholder="Add investigation">
+                    <button type="button" onclick="addTest()">+</button>
+                </div>
+                <ul id="testList" class="item-list test-list"></ul>
+                <div id="selectedTests" class="print-test-list"></div>
+            </section>
+
+
+        </aside>
+
+        <section class="prescription-area">
+            <div class="rx-mark">℞</div>
+
+            <div class="drug-builder">
+                <div class="medicine-search-wrap">
+                    <input id="medicineName" class="medicine-name" placeholder="Medicine Name / Tab / Cap" autocomplete="off">
+                    <div id="medicineSuggestions" class="medicine-suggestions" role="listbox"></div>
+                </div>
+                <div class="drug-row">
+                    <div class="dose-group" aria-label="Dose">
+                        <input id="dose1" class="dose-part" inputmode="numeric" placeholder="1">
+                        <span>+</span>
+                        <input id="dose2" class="dose-part" inputmode="numeric" placeholder="0">
+                        <span>+</span>
+                        <input id="dose3" class="dose-part" inputmode="numeric" placeholder="1">
+                    </div>
+                    <select id="medicineTiming">
+                        <option>After Meal</option>
+                        <option>Before Meal</option>
+                        <option>With Meal</option>
+                        <option>At Bedtime</option>
+                        <option>As Directed</option>
+                    </select>
+                    <input id="medicineDuration" list="durationOptions" placeholder="Duration">
+                    <datalist id="durationOptions">
+                        <option value="1 Day"></option>
+                        <option value="3 Days"></option>
+                        <option value="5 Days"></option>
+                        <option value="7 Days"></option>
+                        <option value="10 Days"></option>
+                        <option value="14 Days"></option>
+                        <option value="1 Month"></option>
+                        <option value="2 Month"></option>
+                        <option value="3 Month"></option>
+                        <option value="Continue"></option>
+                    </datalist>
+                </div>
+
+                <div class="drug-row bottom">
+                    <input id="medicineNote" placeholder="Additional suggestion (optional)">
+                    <button onclick="addMedicine()">Add Drug</button>
+                </div>
+            </div>
+
+            <div id="medicineList" class="medicine-list"></div>
+
+            <div class="advice-box">
+                <label>Advice</label>
+                <textarea id="advice" placeholder="Write advice for the patient..."></textarea>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rx-footer">
+        <div class="footer-item">
+            <div class="clock">◷</div>
+            <div><b>CONSULTATION HOURS</b><br><span>Sat - Thu : 10:00 AM - 8:00 PM</span><br><span>Friday : Closed</span></div>
+        </div>
+        <div class="footer-item followup">
+            <div><b>FOLLOW UP</b><br>
+                <span>After : <input id="followDays" class="small"> Days</span><br>
+                <span>Date : <input id="followDate" type="date" class="date-small"></span>
+            </div>
+        </div>
+        <div class="signature">
+            <div class="signature-line"></div>
+            <b>Doctor's Signature</b>
+        </div>
+    </footer>
+
+    <div class="bottom-slogan">
+        <span>♡</span>
+        <em>Your Health, Our Priority</em>
+        <span>✚</span>
+    </div>
+
+    <div class="actions">
+        <button class="print-btn" onclick="window.print()">🖨 Print Prescription</button>
+        <button class="clear-btn" onclick="clearForm()">Clear Form</button>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,292 @@
+*{box-sizing:border-box}
+:root{--blue:#123f7a;--blue2:#1e579f;--light:#eef2f6;--line:#b9c7d8;--gray:#66717d}
+html,body{margin:0;padding:0}
+body{background:#dfe4e9;font-family:Arial,Helvetica,sans-serif;color:#14243a}
+.page{width:min(1180px,96vw);margin:18px auto;background:#fff;box-shadow:0 8px 30px #0002;overflow:hidden}
+
+/* Header */
+.rx-header{min-height:190px;padding:28px 38px 22px;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.95fr);gap:28px;align-items:center;background:linear-gradient(135deg,#174b8f 0 15%,#fff 15% 82%,#e9edf2 82%)}
+.header-left{display:flex;align-items:center;gap:28px;min-width:0}
+.logo-wrap{width:155px;height:155px;flex:0 0 155px;display:flex;align-items:center;justify-content:center}
+.logo-wrap img{width:100%;height:100%;object-fit:contain;border-radius:50%}
+.doctor-block{min-width:0;display:flex;flex-direction:column;gap:2px}
+.clinic-block{min-width:0;border-left:2px solid #b8c1ca;padding-left:28px;display:flex;flex-direction:column;gap:5px}
+.editable{min-height:18px;outline:none;border:0;background:transparent;cursor:text;white-space:nowrap;overflow:hidden}
+.editable:empty::before{content:attr(data-placeholder);color:#7d8997;opacity:.9;pointer-events:none}
+.doctor-block .editable{color:#173f75;font-size:14px;line-height:1.25;font-weight:500}
+.doctor-block .doctor-name{font-family:Georgia,"Times New Roman",serif;font-size:30px;font-weight:800;letter-spacing:.2px;line-height:1.05;margin-bottom:4px;color:#123f7a}
+.clinic-block .editable{color:#173f75;font-size:13px;line-height:1.3}
+.clinic-title{display:flex;align-items:center;gap:10px;min-width:0}
+.clinic-icon{width:30px;height:30px;flex:0 0 30px;border-radius:6px;background:#1e579f;color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:bold}
+.clinic-title .clinic-name{font-size:18px;font-weight:800;flex:1;min-width:0}
+
+/* Patient info */
+.patient-box{margin:18px 28px;padding:15px 22px;border:2px solid #b9c8d8;border-radius:12px;display:grid;grid-template-columns:minmax(0,2.05fr) minmax(60px,.62fr) minmax(100px,.85fr) minmax(130px,1.05fr) minmax(125px,1fr);gap:10px 18px;align-items:center;overflow:hidden}
+.patient-box>div{min-width:0;max-width:100%;display:flex;align-items:center;gap:6px}
+.patient-box label{flex:0 0 auto;font-weight:700;color:#143d76;white-space:nowrap}
+.patient-box input,.patient-box select{display:block;flex:1 1 auto;width:auto;min-width:0;max-width:100%;border:0;border-bottom:1.5px solid #64758a;outline:0;padding:4px 2px;font-size:14px;background:transparent;color:#14243a}
+.patient-box select{appearance:auto;-webkit-appearance:auto}
+
+/* Main */
+.workspace{display:grid;grid-template-columns:290px minmax(0,1fr);gap:22px;padding:18px 28px 20px}
+.left-column{display:flex;flex-direction:column;gap:18px;min-width:0}
+.side-card{border:2px solid #bdcada;border-radius:10px;padding:0 14px 12px;background:#fff;min-width:0}
+.section-tab{display:inline-block;background:#174d91;color:#fff;font-weight:800;font-size:17px;letter-spacing:1px;padding:11px 20px;border-radius:0 0 10px 0;margin-left:-2px}
+.add-line{display:flex;margin-top:14px}
+.add-line input{flex:1;min-width:0;border:1px solid #bcc7d3;border-right:0;border-radius:6px 0 0 6px;padding:9px;font-size:14px;outline:none}
+.add-line button{width:50px;border:0;border-radius:0 6px 6px 0;background:#1e579f;color:#fff;font-size:22px;font-weight:bold;cursor:pointer}
+.item-list{list-style:none;margin:8px 0 0;padding:0}
+.item-list li{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:5px 0;border-bottom:1px dotted #aeb8c4}
+.item-list li span{min-width:0;word-break:break-word}
+.remove{border:0;background:transparent;color:#174d91;font-size:18px;cursor:pointer;flex:0 0 auto}
+.suggestion-grid{display:flex;flex-wrap:wrap;gap:6px;padding:9px 0 4px}
+.suggestion-grid button{border:1px solid #b9c8d8;background:#f4f7fa;color:#174d91;border-radius:5px;padding:5px 8px;font-size:12px;font-weight:600;cursor:pointer}
+.suggestion-grid button:hover{background:#e7eef7}
+.oe-suggestions button{font-size:11px;padding:4px 6px}
+.mh-suggestions button{font-size:11px;padding:4px 6px}
+.vitals{display:flex;flex-direction:column;gap:7px;margin-top:10px;font-size:14px}
+.vitals label{color:#14243a}
+.vitals input{border:0;border-bottom:1px solid #657487;width:75px;outline:0}
+.vitals textarea{width:100%;min-height:55px;border:0;border-bottom:1px dotted #657487;outline:0;resize:vertical}
+.test-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;padding:12px 0;font-size:14px}
+.test-grid input{accent-color:#174d91}
+.tests-card .test-list{margin-top:7px}
+
+/* Prescription */
+.prescription-area{border:2px solid #bdcada;border-radius:10px;min-height:820px;padding:18px 25px;position:relative;min-width:0}
+.rx-mark{font-family:Georgia,serif;font-size:48px;font-style:italic;color:#174d91;border-bottom:2px solid #8ba0b7;padding-bottom:6px}
+.drug-builder{background:#f0f2f5;border:1px solid #c8d0d9;border-radius:12px;padding:14px;margin-top:14px}
+.drug-builder input,.drug-builder select{border:1px solid #c7cfd8;border-radius:6px;padding:9px;background:#fff;outline:0;font-size:14px;min-width:0}
+.medicine-name{width:100%;margin-bottom:10px}
+.drug-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;min-width:0}
+.dose-group{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:5px;min-width:0}
+.dose-group .dose-part{width:100%;min-width:0;text-align:center}
+.dose-group span{font-weight:700;color:#174d91}
+.drug-row.bottom{grid-template-columns:minmax(0,1fr) auto;margin-top:10px}
+.drug-row.bottom button{padding:8px 16px;border:0;background:#1e579f;color:#fff;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer}
+.medicine-list{margin-top:18px}
+.medicine-card{border-bottom:1px solid #cbd4de;padding:10px 4px;display:grid;grid-template-columns:35px minmax(0,1.5fr) minmax(45px,1fr) minmax(80px,1fr) auto;gap:10px;align-items:center}
+.medicine-card .num{font-weight:bold;color:#174d91}.medicine-card .drug-title{font-weight:bold}.medicine-card small{color:#5c6874}
+.delete-drug{border:0;background:#e7ebef;color:#174d91;border-radius:5px;padding:5px 8px;cursor:pointer}
+.advice-box{margin-top:30px}.advice-box label{font-weight:bold;color:#174d91}.advice-box textarea{width:100%;min-height:100px;margin-top:7px;border:1px solid #bdcada;border-radius:7px;padding:10px;resize:vertical}
+
+/* Footer */
+.rx-footer{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:25px;background:#edf1f5;border-top:1px solid #ccd4dd;padding:18px 45px;align-items:center}
+.footer-item{display:flex;gap:15px;align-items:center;font-size:13px}.footer-item b{color:#17457e;font-size:13px}.clock{font-size:48px;color:#174d91}
+.followup{border-left:1px solid #aeb9c4;padding-left:35px}.followup input{border:0;border-bottom:1px solid #657487;background:transparent;width:60px}.followup .date-small{width:130px}
+.signature{text-align:center;border-left:1px solid #aeb9c4;padding-left:25px;color:#17457e;font-size:13px}.signature-line{width:170px;border-top:1px solid #17457e;margin:0 auto 8px}
+.bottom-slogan{height:52px;background:#174d91;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 55px;font-size:22px}.bottom-slogan em{font-size:15px;letter-spacing:1px}
+.actions{padding:18px;text-align:center;background:#fff}.actions button{border:0;border-radius:7px;padding:12px 22px;margin:0 5px;cursor:pointer;font-weight:bold}.print-btn{background:#174d91;color:#fff}.clear-btn{background:#e2e6ea;color:#173f75}
+
+@media(max-width:900px){
+ .rx-header{grid-template-columns:1fr;padding:20px;background:#fff}.header-left{width:100%}.clinic-block{border-left:0;border-top:1px solid #ccd4dd;margin-top:10px;padding:15px 0 0}
+ .patient-box{grid-template-columns:1.8fr .7fr 1fr 1fr 1fr;gap:10px}.workspace{grid-template-columns:1fr}.rx-footer{grid-template-columns:1fr;padding:18px}.followup,.signature{border-left:0;padding-left:0;border-top:1px solid #c5ced8;padding-top:15px}
+}
+@media(max-width:650px){
+ .header-left{flex-direction:column;align-items:flex-start}.logo-wrap{width:110px;height:110px;flex-basis:110px}.doctor-block .doctor-name{font-size:25px}.patient-box{grid-template-columns:1fr 1fr}.patient-box>div{width:100%}.workspace{padding:12px}.drug-row{grid-template-columns:1fr}.drug-row.bottom{grid-template-columns:1fr}.drug-row.bottom button{width:100%}
+}
+
+@page{size:A4 portrait;margin:0}
+@media print{
+ html,body{width:210mm;height:297mm;margin:0;padding:0;background:#fff;overflow:hidden}
+ body{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+ .page{width:210mm;height:297mm;min-height:297mm;margin:0;box-shadow:none;overflow:hidden}
+
+ /* Header */
+ .rx-header{height:45mm;min-height:45mm;padding:4mm 7mm 3mm;display:grid;grid-template-columns:56% 44%;gap:0;align-items:center;background:linear-gradient(135deg,#174b8f 0 11%,#fff 11% 82%,#e9edf2 82%)!important}
+ .header-left{gap:4mm;width:100%;min-width:0}.logo-wrap{width:28mm;height:28mm;flex:0 0 28mm}.doctor-block{min-width:0}.doctor-block .editable{font-size:7.5pt;line-height:1.15}.doctor-block .doctor-name{font-size:17pt;line-height:1.05;margin-bottom:1mm;white-space:nowrap;color:#123f7a!important}
+ .clinic-block{width:100%;min-width:0;padding:1mm 0 0 5mm;gap:1.4mm;border-left:1px solid #b8c1ca;overflow:visible}.clinic-title{width:100%;gap:2mm}.clinic-icon{width:7mm;height:7mm;flex:0 0 7mm;font-size:5mm}.clinic-title .clinic-name{font-size:8.5pt;white-space:nowrap;overflow:visible}.clinic-block .editable{font-size:7.5pt;line-height:1.2}
+
+ /* Patient info: FIXED columns; inputs use flex so labels don't overlap */
+ .patient-box{height:21mm;margin:2.5mm 5mm 2mm;padding:2.5mm 3.5mm;grid-template-columns:52mm 16mm 29mm 38mm 38mm;gap:0 3mm;border-radius:3mm;font-size:7.2pt;align-items:center;overflow:hidden}
+ .patient-box>div{min-width:0;max-width:100%;display:flex;align-items:center;gap:1.2mm}
+ .patient-box label{font-size:7.2pt;flex:0 0 auto;white-space:nowrap}
+ .patient-box input,.patient-box select{font-size:7.2pt!important;padding:1mm 0.5mm;min-width:0!important;width:auto!important;max-width:100%;flex:1 1 auto;box-sizing:border-box}
+ .patient-box select{appearance:none!important;-webkit-appearance:none!important;background-image:none!important}
+ input[type=date]::-webkit-calendar-picker-indicator,#patientDate::-webkit-calendar-picker-indicator,#followDate::-webkit-calendar-picker-indicator{display:none!important;-webkit-appearance:none!important}
+
+ /* Workspace */
+ .workspace{grid-template-columns:52mm minmax(0,1fr);gap:3mm;padding:1mm 5mm 2mm;height:186mm;overflow:hidden}.left-column{gap:2.5mm}.side-card{border-radius:2mm;padding:0 2.2mm 2mm;border-width:1px}.section-tab{font-size:8pt;padding:2mm 4mm}.add-line{margin-top:2mm}.add-line input,.add-line button{font-size:7pt;padding:1.5mm}.item-list{margin:1.5mm 0}.item-list li,.vitals,.test-grid{font-size:7pt}.vitals{gap:1.5mm}.vitals textarea{min-height:9mm}.test-grid{gap:1.2mm;padding:2mm 0}
+
+ /* Hide all entry controls; show only saved data */
+ .add-line,.drug-builder,.actions,.delete-drug,.remove,.suggestion-grid,.test-grid label input,#testInput{display:none!important}
+ .test-grid label{
+    display:none !important;
+}
+
+.print-test-list{
+    display:block !important;
+    margin-top:2mm;
+}
+ .print-test-list{display:block!important;margin-top:2mm}.test-list:empty,#selectedTests:empty{display:none!important}
+ .item-list li{padding:1.5mm 0;border-bottom:1px dotted #aeb8c4}
+ .vital-field.print-empty{display:none!important}
+ .side-card.print-empty-card{display:none!important}
+
+ /* Prescription */
+ .prescription-area{height:181mm;min-height:181mm;border-radius:2mm;padding:3mm 4mm;overflow:hidden}.rx-mark{font-size:25pt;padding-bottom:1mm}.medicine-list{margin-top:2mm}
+ .medicine-card{padding:1.8mm 1mm;grid-template-columns:7mm minmax(0,1.8fr) 1fr 1.2fr;gap:2mm;font-size:7pt}.medicine-card small{font-size:6.5pt}
+ .advice-box{margin-top:3mm}.advice-box textarea{min-height:18mm;margin-top:1mm;padding:2mm;font-size:7pt}
+
+ /* Footer / follow-up stays on right */
+ .rx-footer{height:28mm;min-height:28mm;grid-template-columns:1.25fr 1fr 1fr;gap:4mm;padding:3mm 8mm;align-items:center;overflow:hidden;font-size:7pt}.rx-footer .footer-item:first-child{grid-column:1}.rx-footer .followup{grid-column:2}.rx-footer .signature{grid-column:3}.followup{border-left:1px solid #aeb9c4;padding-left:5mm;min-width:0}.followup input{width:18mm}.followup .date-small{width:30mm}.signature{padding-left:4mm;min-width:0}.signature-line{width:35mm;margin-bottom:1.5mm}.footer-item,.footer-item b,.signature{font-size:7pt}.clock{font-size:25pt}.bottom-slogan{height:9mm;min-height:9mm;padding:0 10mm;font-size:12pt}.bottom-slogan em{font-size:7pt}
+ input,select,textarea{color:#14243a!important;-webkit-text-fill-color:#14243a!important}
+}
+/* =========================================================
+   MEDICINE DATABASE SUGGESTIONS
+   ========================================================= */
+
+.medicine-search-wrap {
+    position: relative;
+    width: 100%;
+}
+
+
+.medicine-search-wrap .medicine-name {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* Suggestion dropdown */
+
+.medicine-suggestions {
+    position: absolute;
+
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+
+    background: #ffffff;
+
+    border: 1px solid #c7d4e3;
+    border-radius: 8px;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+
+    max-height: 360px;
+    overflow-y: auto;
+
+    z-index: 9999;
+
+    display: none;
+}
+
+
+/* Individual medicine */
+
+.medicine-suggestion {
+    display: block;
+
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border: 0;
+    border-bottom: 1px solid #e5e9ee;
+
+    background: #fff;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    transition: background 0.15s ease;
+}
+
+
+.medicine-suggestion:last-child {
+    border-bottom: none;
+}
+
+
+.medicine-suggestion:hover {
+    background: #f3f7fb;
+}
+
+
+/* Brand + strength */
+
+.medicine-top-line {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+
+    margin-bottom: 3px;
+}
+
+
+.medicine-top-line strong {
+    font-size: 17px;
+
+    font-weight: 700;
+
+    color: #333;
+}
+
+
+.medicine-strength {
+    font-size: 14px;
+
+    color: #777;
+
+    font-weight: 500;
+}
+
+
+/* Tablet / Capsule / Syrup etc. */
+
+.medicine-type {
+    font-size: 15px;
+
+    color: #7c9aae;
+
+    margin-bottom: 3px;
+}
+
+
+/* Generic */
+
+.medicine-generic {
+    font-size: 15px;
+
+    color: #444;
+
+    margin-bottom: 3px;
+}
+
+
+/* Company */
+
+.medicine-company {
+    font-size: 14px;
+
+    color: #555;
+}
+
+
+/* No result */
+
+.medicine-no-result {
+    padding: 14px;
+
+    text-align: center;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+/* Scrollbar */
+
+.medicine-suggestions::-webkit-scrollbar {
+    width: 6px;
+}
+
+.medicine-suggestions::-webkit-scrollbar-thumb {
+    background: #c4ced8;
+    border-radius: 10px;
+}
